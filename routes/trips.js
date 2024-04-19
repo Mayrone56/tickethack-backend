@@ -1,4 +1,5 @@
 
+//Conssole.log('hello')
 var express = require('express');
 var router = express.Router();
 const Trip = require("../models/trips");
@@ -10,12 +11,17 @@ console.log("coucou 2")
 /* GET users listing. */
 router.get('/findTrips/:departure/:arrival/:date', (request, response) => {
     //Module moment
+    // const { departure, arrival, date } = req.params;
+
     const date = moment(request.params.date); 
     Trip.find({
+        //new RegExp permet de gerer la classe
         departure: request.params.departure,
         arrival: request.params.arrival,
         //Moment module cf doc moment
-        date:{$gte:date.startOf('day').format(),$lt:date.endOf('day').format()}
+        //date:{$gte:date.startOf('day').format(),$lt:date.endOf('day').format()};
+        //Update avec moment en dessous
+        date: {$gte:moment(date).startOf('day'), $lte: moment(date).endOf('day')}
     })
     .then((trips) => {
         response.json(trips);
