@@ -11,6 +11,7 @@ const nocache = require('nocache');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var tripRouter = require('./routes/trips');
+var cartRouter = require('./routes/carts');
 
 var app = express();
 //CORS
@@ -27,6 +28,7 @@ app.use(nocache());
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/trips', tripRouter);
+app.use('/carts', cartRouter);
 
 
 console.log("coucou")
