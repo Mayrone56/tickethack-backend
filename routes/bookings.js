@@ -4,7 +4,7 @@ const Booking = require("../models/bookings");
 const Cart = require("../models/carts");
 const fetch = require('node-fetch');
 
-console.log("coucou bookings routes")
+//console.log("coucou bookings routes")
 
 
 
